@@ -1,0 +1,6 @@
+**/obj
+**/bin
+**/.vs
+/src/**/*.user
+/.sonarlint
+/sql-test/sqldata
