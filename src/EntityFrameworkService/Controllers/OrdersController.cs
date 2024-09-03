@@ -5,6 +5,7 @@ using Microsoft.Build.Framework;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -30,7 +31,7 @@ namespace EntityFrameworkService.Controllers
         public async Task<ActionResult<IEnumerable<Order>>> GetByCustomer([FromQuery] string customerId, [FromQuery] int pageNumber = 1, [FromQuery] int resultsPerPage = 10)
         {
             var orders = await _OrderService.GetOrdersByCustomerIdAsync(customerId, pageNumber, resultsPerPage);
-            if(orders.IsNullOrEmpty())
+            if(!orders.Any())
             {
                 return NotFound();
             }
@@ -41,7 +42,7 @@ namespace EntityFrameworkService.Controllers
         public async Task<ActionResult<IEnumerable<Order>>> GetByEmployee([FromQuery] int employeeId, [FromQuery] int pageNumber = 1, [FromQuery] int resultsPerPage = 10)
         {
             var orders = await _OrderService.GetOrdersByEmployeeIdAsync(employeeId, pageNumber, resultsPerPage);
-            if (orders.IsNullOrEmpty())
+            if (!orders.Any())
             {
                 return NotFound();
             }
