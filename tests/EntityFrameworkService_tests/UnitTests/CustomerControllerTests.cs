@@ -220,7 +220,7 @@ namespace EntityFrameworkService_tests.UnitTests
 
             Assert.NotNull(responseContent);
 
-            Assert.Contains($"\"CustomerId\":[\"Entity with {customer.CustomerId} is not present\"]", responseContent);
+            Assert.Contains($"\"Entity with {customer.CustomerId} is not present\"", responseContent);
         }
 
         [Fact]

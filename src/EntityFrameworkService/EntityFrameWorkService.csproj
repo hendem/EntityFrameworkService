@@ -39,4 +39,8 @@
     <ProjectReference Include="..\Infrastructure\NorthWinds.Persistence\NorthWinds.Persistence.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Middleware\" />
+  </ItemGroup>
+
 </Project>

@@ -2,7 +2,6 @@ using Application.Models.DTOs.Customer;
 using Application.Services;
 using Application.Services.Services;
 using Domain.Repositories;
-using EntityFrameworkService.Validation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -55,18 +54,8 @@ namespace EntityFrameworkService
             //        .Build();
             //});
 
-                        
-            services.AddControllers().ConfigureApiBehaviorOptions(options =>
-                {
-                    options.InvalidModelStateResponseFactory = actionContext =>
-                    {
-                        var traceId = Activity.Current?.Id ?? actionContext.HttpContext.TraceIdentifier;
-                        var X_GP_Request_Id = actionContext.HttpContext.Request.Headers["X-GP-Request-Id"];
-                        var errorResponse = ValidationErrorResponse.GetValidationErrorResponse(actionContext.ModelState, traceId, X_GP_Request_Id);
 
-                        return new BadRequestObjectResult(errorResponse);
-                    };
-                });
+            services.AddControllers();
 
 
             services.AddHealthChecks()
@@ -81,13 +70,7 @@ namespace EntityFrameworkService
             });
 
             services.AddHttpClient()
-                .AddHeaderPropagation();
-
-            services.AddHeaderPropagation(options =>
-            {
-                //Add GPI headers that need to be propigated in outgoing requests here.
-                options.Headers.Add("X-GP-Request-Id");
-            });
+                .AddHeaderPropagation();         
 
             services.AddDbContext<NorthWindsContext>(options => options.UseSqlServer(
                 Configuration.GetConnectionString("NorthWindsContext"),
@@ -100,21 +83,19 @@ namespace EntityFrameworkService
 
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+            services.AddProblemDetails();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {            
-            app.UseForwardedHeaders(new ForwardedHeadersOptions { ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto });
-            app.UseHeaderPropagation();
-
-            //uncomment to enable appending access token signatures from the acctoken cookie.
-            //app.UseMiddleware<CookieSignatureMiddleware>();
 
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
+
 
             //app.UseHttpsRedirection();
 

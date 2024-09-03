@@ -11,7 +11,7 @@ using Application.Models.DTOs.Customer;
 using System.Diagnostics;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.ComponentModel.DataAnnotations;
-using EntityFrameworkService.Validation;
+using Microsoft.AspNetCore.Http;
 
 namespace EntityFrameworkService.Controllers
 {
@@ -62,28 +62,26 @@ namespace EntityFrameworkService.Controllers
             var createdCustomer = await _customerService.AddCustomerAsync(customer);
             return CreatedAtAction(nameof(Get), new { id = createdCustomer.CustomerId }, createdCustomer );
         }
-
-
-        private ActionResult<Customer> BadRequest(Dictionary<string, List<string>> errors)
-        {
-            string traceId= Activity.Current?.Id ?? HttpContext.TraceIdentifier;
-            string X_GP_Request_Id = HttpContext.Request.Headers["X-GP-Request-Id"];
-            var errorResponse = ValidationErrorResponse.GetValidationErrorResult(traceId, X_GP_Request_Id, errors);
-
-            return BadRequest(errorResponse);
-        }
+       
 
         // PUT api/<CustomerController>
         [HttpPut]
         public async Task<ActionResult<Customer>> Put([FromBody] Customer customer)
-        {            
+        {
             try
             {
                 return Ok(await _customerService.UpdateCustomerAsync(customer));
             }
-            catch(ArgumentException ex)
-            {               
-                return BadRequest(new Dictionary<string, List<string>> { { "CustomerId", new List<string> { ex.Message } } });
+            catch (ArgumentException ex)
+            {
+                var problemDetails = new ProblemDetails
+                {
+                    Status = StatusCodes.Status400BadRequest,
+                    Title = "Invalid Customer ID",
+                    Detail = ex.Message,
+                    Instance = HttpContext.Request.Path
+                };
+                return BadRequest(problemDetails);
             }
         }
 
