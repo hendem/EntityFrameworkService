@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <RootNamespace>EntityFrameWorkService</RootNamespace>
+    <RootNamespace>EntityFrameworkService</RootNamespace>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <UserSecretsId>0d100a3b-d151-48e5-9017-825cd6e5a4b6</UserSecretsId>
   </PropertyGroup>

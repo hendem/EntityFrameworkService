@@ -28,7 +28,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\Application\Application.Models\Application.Models.csproj" />
     <ProjectReference Include="..\..\src\Domain\Domain\Domain.csproj" />
-    <ProjectReference Include="..\..\src\EntityFrameworkService\EntityFrameWorkService.csproj" />
+    <ProjectReference Include="..\..\src\EntityFrameworkService\EntityFrameworkService.csproj" />
     <ProjectReference Include="..\..\src\Infrastructure\HealthChecks\HealthChecks.csproj" />
   </ItemGroup>
 

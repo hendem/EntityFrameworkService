@@ -1,14 +1,10 @@
 ﻿using Application.Models.DTOs.Order;
 using Application.Services.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Build.Framework;
 using Microsoft.Extensions.Logging;
-using Microsoft.IdentityModel.Tokens;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace EntityFrameworkService.Controllers
 {
@@ -18,19 +14,19 @@ namespace EntityFrameworkService.Controllers
     {
 
         private readonly ILogger<OrdersController> _logger;
-        private readonly IOrderService _OrderService;
+        private readonly IOrderService _orderService;
 
         public OrdersController(ILogger<OrdersController> logger, IOrderService orderService)
         {
             _logger = logger;
-            _OrderService = orderService;
+            _orderService = orderService;
         }
 
         // GET: api/<OrdersController>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Order>>> GetByCustomer([FromQuery] string customerId, [FromQuery] int pageNumber = 1, [FromQuery] int resultsPerPage = 10)
         {
-            var orders = await _OrderService.GetOrdersByCustomerIdAsync(customerId, pageNumber, resultsPerPage);
+            var orders = await _orderService.GetOrdersByCustomerIdAsync(customerId, pageNumber, resultsPerPage);
             if(!orders.Any())
             {
                 return NotFound();
@@ -41,7 +37,7 @@ namespace EntityFrameworkService.Controllers
         [HttpGet("byEmployeeId")]
         public async Task<ActionResult<IEnumerable<Order>>> GetByEmployee([FromQuery] int employeeId, [FromQuery] int pageNumber = 1, [FromQuery] int resultsPerPage = 10)
         {
-            var orders = await _OrderService.GetOrdersByEmployeeIdAsync(employeeId, pageNumber, resultsPerPage);
+            var orders = await _orderService.GetOrdersByEmployeeIdAsync(employeeId, pageNumber, resultsPerPage);
             if (!orders.Any())
             {
                 return NotFound();
@@ -53,7 +49,7 @@ namespace EntityFrameworkService.Controllers
         [HttpGet("{orderId}")]
         public async Task<ActionResult<Order>> Get(int orderId)
         {
-            var order = await _OrderService.GetOrderAsync(orderId);
+            var order = await _orderService.GetOrderAsync(orderId);
             if (order == null) return NotFound();
             return Ok(order);
         }

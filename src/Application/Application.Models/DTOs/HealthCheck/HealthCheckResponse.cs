@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Application.DTOs.HealthCheck
+namespace Application.Models.DTOs.HealthCheck
 {
     public class HealthCheckResponse
     {

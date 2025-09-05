@@ -1,4 +1,4 @@
-﻿namespace Application.DTOs.HealthCheck
+﻿namespace Application.Models.DTOs.HealthCheck
 {
     public class HealthCheckEntry
     {

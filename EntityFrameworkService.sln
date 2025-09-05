@@ -30,7 +30,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NorthWinds.Persistence.Test
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Services", "src\Application\Application.Services\Application.Services\Application.Services.csproj", "{CE37AA30-BD9A-41A2-A916-0D75F691DF1F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityFrameWorkService", "src\EntityFrameworkService\EntityFrameWorkService.csproj", "{946220E0-ADAC-4A82-AB4F-BBC2B6388548}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityFrameworkService", "src\EntityFrameworkService\EntityFrameworkService.csproj", "{946220E0-ADAC-4A82-AB4F-BBC2B6388548}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityFrameworkService-tests", "tests\EntityFrameworkService_tests\EntityFrameworkService-tests.csproj", "{30B8FDFA-3EE9-4FCC-9FE5-B2F16139B0AA}"
 EndProject
