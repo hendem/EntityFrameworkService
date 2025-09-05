@@ -1,17 +1,12 @@
-﻿using Application.Services;
+﻿using Application.Models.DTOs.Customer;
+using Application.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Build.Framework;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
-using Application.Models.DTOs.Customer;
-using System.Diagnostics;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Http;
 
 namespace EntityFrameworkService.Controllers
 {

@@ -1,4 +1,4 @@
-﻿using Application.DTOs.HealthCheck;
+﻿using Application.Models.DTOs.HealthCheck;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
