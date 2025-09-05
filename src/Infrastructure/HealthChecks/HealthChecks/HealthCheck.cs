@@ -25,7 +25,7 @@
                 //TODO: Test something here.
                 await Task.CompletedTask; //<-- delete me, just to make it async.
 
-                _logger.LogDebug("Healh check is healthy.");
+                _logger.LogDebug("Health check is healthy.");
                 return HealthCheckResult.Healthy();                
             }
             catch (Exception ex)
