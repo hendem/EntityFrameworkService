@@ -60,8 +60,8 @@ namespace EntityFrameworkService
 
             services.AddHealthChecks()
                     .AddCheck<Infrastructure.HealthChecks.HealthCheck>("TemplateCheck", Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus.Unhealthy)
-                    .AddDbContextCheck<NorthWindsContext>("Northwind database Health check")
-                    .AddDbContextCheck<NorthWindsReadOnlyContext>("Northwind database Health check - Read only account");
+                    .AddDbContextCheck<NorthWindsContext>("NorthWinds database Health check")
+                    .AddDbContextCheck<NorthWindsReadOnlyContext>("NorthWinds database Health check - Read only account");
 
             services.AddSwaggerGen(c =>
             {
