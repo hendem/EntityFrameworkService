@@ -57,7 +57,7 @@ if ($delete) {
         # Run the SQL scripts to create the schema and insert data
         & sqlcmd -S $server -U $username -P $password -d $database -i "./instnwnd.sql"
         Write-Output "Schema created."
-        & sqlcmd -S $server -U $username -P $password -d $database -i "./InsertNorthwindsDefaultData.sql"
+        & sqlcmd -S $server -U $username -P $password -d $database -i "./InsertNorthWindsDefaultData.sql"
         Write-Output "Data inserted."
         & sqlcmd -S $server -U $username -P $password -d $database -i "./CreateUsers.sql"
         Write-Output "Created asp user."

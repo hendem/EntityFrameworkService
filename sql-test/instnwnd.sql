@@ -9115,7 +9115,7 @@ ORDER BY ProductName
 GO
 
 
-/* The follwing adds tables to the Northwind database */
+/* The following adds tables to the NorthWinds database */
 
 
 CREATE TABLE [dbo].[CustomerCustomerDemo] 
@@ -9264,7 +9264,7 @@ GO
 
 
 
---  The following adds constraints to the Northwind database
+--  The following adds constraints to the NorthWinds database
 
 ALTER TABLE CustomerCustomerDemo
 	ADD CONSTRAINT [PK_CustomerCustomerDemo] PRIMARY KEY  NONCLUSTERED 
