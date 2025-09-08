@@ -1,4 +1,4 @@
--- DATABASE : Northwind 
+-- DATABASE : NorthWinds 
 -- ORIGIN   : MS SQL 
 -- SOURCE   : SQLITE 3
 -- 
@@ -5985,7 +5985,7 @@ PRAGMA foreign_keys=on;
 -- Valon Hoti @ 2010-07-04 [YYYY-MM-DD]
 -- Prishtine,10000
 -- KOSOVE
--- DATABASE : Northwind 
+-- DATABASE : NorthWinds 
 -- ORIGIN   : MS SQL 
 -- SOURCE   : SQLITE 3
 -- 
